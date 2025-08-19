@@ -25,14 +25,15 @@ int main() {
     omp_set_dynamic(0);
     omp_set_num_threads(4);
 
-    int result;
-    double t0 = omp_get_wtime(); 
+    
+   
 //time taken 
     #pragma omp parallel shared(n, result)
     {
         #pragma omp single
         {
-            result = fib(n);
+            double t0 = omp_get_wtime(); 
+          int result = fib(n);
         }
     }
 
