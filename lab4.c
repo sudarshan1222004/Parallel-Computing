@@ -33,7 +33,11 @@ int main(){
     for(int i=1;i<=n;i++){
         if(is_prime(i)) parallel_prime_count++;
     }
-   
+    double time_par=omp_get_wtime()-start_time;
+    printf("parallel: found %d primes in %f seconds \n",parallel_prime_count,time_par);
+    if(time_par>0 && time_seq>0){
+        printf("\n speed up: %2fx \n",time_seq/time_par);
+    }
     return 0;
 
 }
